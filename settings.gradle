@@ -1,1 +1,3 @@
 rootProject.name = "aditogether"
+
+includeBuild 'build-tools'
