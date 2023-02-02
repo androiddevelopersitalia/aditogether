@@ -1,0 +1,19 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.8.10' // TODO: #1 Use from version Catalog
+    id 'java-gradle-plugin'
+}
+
+gradlePlugin {
+    plugins {
+        lint {
+            id = 'aditogether.lint'
+            displayName = 'AdiTogether Lint Plugin'
+            description = 'Setup Linters for the project'
+            implementationClass = 'buildtools.lint.LintPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation 'io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.22.0' // TODO: #1 Use from version Catalog
+}
