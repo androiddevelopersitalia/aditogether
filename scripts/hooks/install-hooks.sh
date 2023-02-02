@@ -22,6 +22,7 @@ install_hooks() {
   mkdir -p "$git_hooks_dir"
   # Symlinks the Git hooks (the symlink is resolved relative to its location).
   ln -s -f "../../scripts/hooks/commit-msg.sh" "$git_hooks_dir/commit-msg"
+  ln -s -f "../../scripts/hooks/pre-commit.sh" "$git_hooks_dir/pre-commit"
   print_success $P_TAG "Git hooks successfully installed"
 }
 
