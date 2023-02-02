@@ -32,7 +32,6 @@ execute_script() {
   local script="$SCRIPT_DIR/$script_name"
   if [[ -x "${script}" ]]; then
     print_info $P_TAG "running script '$script_name'"
-    # shellcheck source=/dev/null
     "${script}" || return 1
   else
     print_error $P_TAG "script '$script_name' does not exist or is not executable"
