@@ -1,1 +1,3 @@
 rootProject.name = 'build-tools'
+
+include 'lint'
