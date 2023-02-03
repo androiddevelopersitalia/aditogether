@@ -1,11 +1,9 @@
-package aditogether.buildtools.util
+package aditogether.buildtools.utils
 
 import org.gradle.api.DomainObjectCollection
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.UnknownDomainObjectException
-import org.gradle.api.artifacts.VersionCatalog
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.ExtensionContainer
 import org.gradle.api.plugins.PluginAware
 import org.gradle.api.reflect.TypeOf
@@ -58,6 +56,3 @@ inline fun <reified T : Any> ExtensionContainer.getByType(): T =
  */
 inline fun <reified T> typeOf(): TypeOf<T> =
     object : TypeOf<T>() {}
-
-val Project.libsCatalog: VersionCatalog
-    get() = rootProject.extensions.getByType<VersionCatalogsExtension>().named("libs")
