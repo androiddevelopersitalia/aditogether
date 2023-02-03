@@ -12,6 +12,7 @@ P_TAG="tuner"
 # Scripts that need to be executed (the order is respected).
 TUNER_SCRIPTS=(
   "preconditions.sh"
+  "linters/download_detekt_cli.sh"
   "hooks/install-hooks.sh"
 )
 
