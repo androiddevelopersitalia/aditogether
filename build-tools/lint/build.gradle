@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.8.10' // TODO: #1 Use from version Catalog
+    alias(libs.plugins.kotlin.jvm)
     id 'java-gradle-plugin'
 }
 
@@ -15,5 +15,5 @@ gradlePlugin {
 }
 
 dependencies {
-    implementation 'io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.22.0' // TODO: #1 Use from version Catalog
+    implementation libs.gradle.detekt
 }
