@@ -46,7 +46,15 @@ run_bash_linter() {
 }
 
 run_kotlin_linter() {
-  : # TODO run kotlin linter
+  local detekt_dir="$ROOT_DIR/detekt"
+  local detekt_bin_dir="$detekt_dir/bin"
+  local detekt_cli_jar="$detekt_bin_dir/detekt_cli.jar"
+  local detekt_twitter_compose_jar="$detekt_bin_dir/detekt_twitter_compose.jar"
+  if [[ ! -f "$detekt_cli_jar" || ! -f "$detekt_twitter_compose_jar" ]]; then
+    print_error "$P_TAG" "detekt-cli jars required to verify Kotlin files, have you run './scripts/tuner.sh'?"
+    exit 1
+  fi
+  java -jar "$detekt_cli_jar" -p "$detekt_twitter_compose_jar" --config "$detekt_dir/config.yml"
 }
 
 main
