@@ -1,7 +1,17 @@
 *.iml
 .DS_Store
 .gradle
-.idea
 /captures
 build
 local.properties
+
+# IntelliJ
+.idea/.name
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/jarRepositories.xml
+.idea/kotlinc.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
