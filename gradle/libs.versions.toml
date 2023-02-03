@@ -4,6 +4,7 @@ androidxComposeBom = "2022.12.00"
 androidxCore = "1.9.0"
 androidxLifecycle = "2.5.1"
 detekt = "1.22.0"
+detektRulesCompose = "0.0.26"
 gradleAndroidPlugin = "7.3.1"
 koin = "3.3.2"
 koinAnnotation = "1.1.0"
@@ -29,6 +30,8 @@ androidx-activity = { module = "androidx.activity:activity-compose", version.ref
 androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
 androidx-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore" }
+
+detekt-rules-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "detektRulesCompose" }
 
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
