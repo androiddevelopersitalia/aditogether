@@ -3,6 +3,7 @@ androidxActivity = "1.6.1"
 androidxComposeBom = "2022.12.00"
 androidxCore = "1.9.0"
 androidxLifecycle = "2.5.1"
+detekt = "1.22.0"
 gradleAndroidPlugin = "7.3.1"
 koin = "3.3.2"
 koinAnnotation = "1.1.0"
@@ -46,6 +47,7 @@ koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 
 gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
+gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 
@@ -53,6 +55,7 @@ gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serializat
 # TBD
 
 [plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin" }
