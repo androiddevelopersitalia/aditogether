@@ -1,9 +1,9 @@
 package aditogether.buildtools.lint
 
 import org.gradle.api.Plugin
-import aditogether.buildtools.util.apply
-import aditogether.buildtools.util.libsCatalog
-import aditogether.buildtools.util.withType
+import aditogether.buildtools.utils.apply
+import aditogether.buildtools.utils.libsCatalog
+import aditogether.buildtools.utils.withType
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
 import org.gradle.api.Project
