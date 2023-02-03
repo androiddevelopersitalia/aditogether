@@ -34,7 +34,7 @@ main() {
     exit 1
   fi
 
-  local pattern="^(build|chore|ci|docs|feat|fix|perf|refactor|style|test)+(\([a-z0-9\-_\/]+\))?!?:\s[a-z][a-zA-Z0-9 -_\/]+$"
+  local pattern="^(build|chore|ci|docs|feat|fix|perf|refactor|style|test)+(\([a-z0-9\-_\/]+\))?!?:\s[a-z][a-zA-Z0-9 -_\/\`]+$"
   if ! grep -q -E "$pattern" "$COMMIT_MSG_FILE"; then
     print_error "$P_TAG" "the commit message does not follow https://www.conventionalcommits.org/"
     exit 1
