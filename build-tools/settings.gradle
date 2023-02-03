@@ -1,3 +1,11 @@
 rootProject.name = 'build-tools'
 
 include 'lint'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            from files("../gradle/libs.versions.toml")
+        }
+    }
+}

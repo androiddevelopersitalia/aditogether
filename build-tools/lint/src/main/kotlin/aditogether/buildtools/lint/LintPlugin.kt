@@ -2,6 +2,7 @@ package aditogether.buildtools.lint
 
 import org.gradle.api.Plugin
 import aditogether.buildtools.util.apply
+import aditogether.buildtools.util.libsCatalog
 import aditogether.buildtools.util.withType
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
@@ -16,20 +17,14 @@ class LintPlugin : Plugin<Project> {
 }
 
 private fun Project.configureDetekt() {
-    allprojects {
-        apply<DetektPlugin>()
-    }
+    apply<DetektPlugin>()
 
-    subprojects {
-
-        tasks.withType<Detekt> {
-            basePath = rootDir.path
-            config.setFrom("${rootDir.path}/detekt/config.yml")
-        }
+    tasks.withType<Detekt> {
+        config.setFrom("${rootDir.path}/detekt/config.yml")
     }
 
     dependencies.add(
         "detektPlugins",
-        "com.twitter.compose.rules:detekt:0.0.26" // TODO: #1 Use from version Catalog
+        libsCatalog.findLibrary("detekt-rules-compose").get()
     )
 }
