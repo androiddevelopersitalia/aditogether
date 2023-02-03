@@ -57,7 +57,7 @@ bump_detekt() {
 
   print_info $P_TAG "downloading detekt-cli $detekt_version"
   local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-cli-$detekt_version-all.jar"
-  curl -L "$detekt_cli_url" -o "$DETEKT_CLI_JAR"
+  download_file "$detekt_cli_url" "$DETEKT_CLI_JAR"
   print_success $P_TAG "detekt-cli $detekt_version successfully downloaded"
 }
 
@@ -67,11 +67,23 @@ bump_detekt_twitter_compose() {
   mkdir -p "$DETEKT_BIN_DIR"
 
   print_info $P_TAG "downloading detekt-twitter-compose $detekt_twitter_compose_version"
-  local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-cli-$detekt_version-all.jar"
   local detekt_twitter_compose_url="https://github.com/twitter/compose-rules/releases/download/v$detekt_twitter_compose_version/detekt-twitter-compose-$detekt_twitter_compose_version-all.jar"
-  curl -L "$detekt_twitter_compose_url" -o "$DETEKT_TWITTER_COMPOSE_JAR"
+  download_file "$detekt_twitter_compose_url" "$DETEKT_TWITTER_COMPOSE_JAR"
   echo "$detekt_twitter_compose_version" >"$DETEKT_TWITTER_COMPOSE_VERSION_FILE"
   print_success $P_TAG "detekt-twitter-compose $detekt_twitter_compose_version successfully downloaded"
+}
+
+download_file() {
+  local url=$1
+  local output=$2
+  if command -v curl >/dev/null 2>&1; then
+    curl -L "$url" -o "$output"
+  elif command -v wget >/dev/null 2>&1; then
+    wget "$url" -O "$output"
+  else
+    print_error $P_TAG "no 'curl' or 'wget' installed"
+    exit 1
+  fi
 }
 
 main "$@"
