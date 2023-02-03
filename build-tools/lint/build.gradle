@@ -9,7 +9,7 @@ gradlePlugin {
             id = 'aditogether.lint'
             displayName = 'AdiTogether Lint Plugin'
             description = 'Setup Linters for the project'
-            implementationClass = 'buildtools.lint.LintPlugin'
+            implementationClass = 'aditogether.buildtools.lint.LintPlugin'
         }
     }
 }

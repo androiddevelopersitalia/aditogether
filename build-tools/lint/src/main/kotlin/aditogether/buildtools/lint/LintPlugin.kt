@@ -1,10 +1,10 @@
-package buildtools.lint
+package aditogether.buildtools.lint
 
-import buildtools.lint.util.apply
-import buildtools.lint.util.withType
+import org.gradle.api.Plugin
+import aditogether.buildtools.util.apply
+import aditogether.buildtools.util.withType
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
-import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 @Suppress("unused")
