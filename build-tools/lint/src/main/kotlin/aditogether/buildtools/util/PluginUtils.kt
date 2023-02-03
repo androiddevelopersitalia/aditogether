@@ -1,4 +1,4 @@
-package buildtools.lint.util
+package aditogether.buildtools.util
 
 import org.gradle.api.DomainObjectCollection
 import org.gradle.api.Plugin
