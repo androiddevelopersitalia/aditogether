@@ -17,7 +17,7 @@ import org.gradle.api.reflect.TypeOf
  * @param P the plugin type.
  * @see [PluginAware.apply]
  */
-inline fun <reified P : Plugin<*>> Project.apply() {
+inline fun <reified P : Plugin<*>> Project.applyPlugin() {
     plugins.apply(P::class.java)
 }
 

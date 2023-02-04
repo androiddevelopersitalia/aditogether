@@ -1,11 +1,11 @@
 package aditogether.buildtools.lint
 
-import org.gradle.api.Plugin
-import aditogether.buildtools.utils.apply
+import aditogether.buildtools.utils.applyPlugin
 import aditogether.buildtools.utils.libsCatalog
 import aditogether.buildtools.utils.withType
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
+import org.gradle.api.Plugin
 import org.gradle.api.Project
 
 @Suppress("unused")
@@ -17,7 +17,7 @@ class LintPlugin : Plugin<Project> {
 }
 
 private fun Project.configureDetekt() {
-    apply<DetektPlugin>()
+    applyPlugin<DetektPlugin>()
 
     tasks.withType<Detekt> {
         config.setFrom("${rootDir.path}/detekt/config.yml")
