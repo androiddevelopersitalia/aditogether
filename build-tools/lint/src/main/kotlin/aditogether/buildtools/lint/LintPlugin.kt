@@ -1,5 +1,6 @@
 package aditogether.buildtools.lint
 
+import aditogether.buildtools.lint.util.detektPlugins
 import aditogether.buildtools.utils.applyPlugin
 import aditogether.buildtools.utils.libsCatalog
 import aditogether.buildtools.utils.withType
@@ -25,8 +26,9 @@ private fun configureDetekt(target: Project) {
         jvmTarget = "1.8"
     }
 
-    target.dependencies.add(
-        "detektPlugins",
-        target.libsCatalog.findLibrary("detekt-rules-compose").get()
-    )
+    target.dependencies.apply {
+        val catalog = target.libsCatalog
+        detektPlugins(catalog.findLibrary("detekt-rules-compose"))
+        detektPlugins(catalog.findLibrary("detekt-rules-formatting"))
+    }
 }
