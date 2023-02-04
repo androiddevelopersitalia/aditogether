@@ -1,3 +1,7 @@
+@file:Suppress("unused")
+
 package aditogether.playground
 
-fun test () = 123
+fun test() = Constant
+
+const val Constant = 123
