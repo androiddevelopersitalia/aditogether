@@ -17,75 +17,62 @@ P_TAG="download-detekt-cli"
 ROOT_DIR="$SCRIPT_DIR/../.."
 VERSION_CATALOG_PATH="$ROOT_DIR/gradle/libs.versions.toml"
 DETEKT_BIN_DIR="$ROOT_DIR/detekt/bin"
-DETEKT_CLI_JAR_PATH="$DETEKT_BIN_DIR/detekt_cli.jar"
-DETEKT_TWITTER_COMPOSE_JAR_PATH="$DETEKT_BIN_DIR/detekt_twitter_compose.jar"
-DETEKT_TWITTER_COMPOSE_VERSION_PATH="$DETEKT_BIN_DIR/.detekt_twitter_compose_version"
 
 main() {
+  force_bump="$1"
+
   local new_detekt_version new_detekt_twitter_compose_version
   new_detekt_version=$(extract_version_from_catalog "detekt")
   new_detekt_twitter_compose_version=$(extract_version_from_catalog "detektRulesCompose")
 
-  local force_bump="$1"
-  if [[ $force_bump == "force" ]]; then
-    bump_detekt "$new_detekt_version"
-    bump_detekt_formatting "$new_detekt_version"
-    bump_detekt_twitter_compose "$new_detekt_twitter_compose_version"
-    exit 0
-  fi
-
-  if [[ -f "$DETEKT_CLI_JAR_PATH" ]]; then
-    current_detekt_version=$(java -jar "$DETEKT_CLI_JAR_PATH" --version)
-  fi
-  if [[ "$new_detekt_version" == "$current_detekt_version" ]]; then
-    print_info $P_TAG "detekt-cli $new_detekt_version already downloaded, skipping"
-  else
-    bump_detekt "$new_detekt_version"
-    bump_detekt_formatting "$new_detekt_version"
-  fi
-
-  if [[ -f "$DETEKT_TWITTER_COMPOSE_JAR_PATH" && -f "$DETEKT_TWITTER_COMPOSE_VERSION_PATH" ]]; then
-    read -r current_detekt_twitter_compose_version <"$DETEKT_TWITTER_COMPOSE_VERSION_PATH"
-  fi
-  if [[ "$new_detekt_twitter_compose_version" == "$current_detekt_twitter_compose_version" ]]; then
-    print_info $P_TAG "detekt-twitter-compose $new_detekt_twitter_compose_version already downloaded, skipping"
-  else
-    bump_detekt_twitter_compose "$new_detekt_twitter_compose_version"
-  fi
+  bump_detekt_cli "$new_detekt_version" &
+  bump_detekt_formatting "$new_detekt_version" &
+  bump_detekt_twitter_compose "$new_detekt_twitter_compose_version" &
+  wait
 }
 
-bump_detekt() {
-  detekt_version=$1
-
-  mkdir -p "$DETEKT_BIN_DIR"
-
-  print_info $P_TAG "downloading detekt-cli $detekt_version"
-  local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-cli-$detekt_version-all.jar"
-  download_file "$detekt_cli_url" "$DETEKT_CLI_JAR_PATH"
-  print_success $P_TAG "detekt-cli $detekt_version successfully downloaded"
+bump_detekt_cli() {
+  local version=$1
+  bump_detekt_jar "detekt_cli" \
+    "$version" \
+    "https://github.com/detekt/detekt/releases/download/v$version/detekt-cli-$version-all.jar"
 }
 
 bump_detekt_formatting() {
-   detekt_version=$1
-
-    mkdir -p "$DETEKT_BIN_DIR"
-
-    print_info $P_TAG "downloading detekt-formatting $detekt_version"
-    local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-formatting-$detekt_version.jar"
-    download_file "$detekt_cli_url" "$DETEKT_BIN_DIR/detekt_formatting.jar"
-    print_success $P_TAG "detekt-formatting $detekt_version successfully downloaded"
+  local version=$1
+  bump_detekt_jar "detekt_formatting" \
+    "$version" \
+    "https://github.com/detekt/detekt/releases/download/v$version/detekt-formatting-$version.jar"
 }
 
 bump_detekt_twitter_compose() {
-  detekt_twitter_compose_version=$1
+  local version=$1
+  bump_detekt_jar "detekt_twitter_compose" \
+    "$version" \
+    "https://github.com/twitter/compose-rules/releases/download/v$version/detekt-twitter-compose-$version-all.jar"
+}
+
+bump_detekt_jar() {
+  local id=$1
+  local version=$2
+  local url=$3
+  local jar_file="$DETEKT_BIN_DIR/$id.jar"
+  local version_file="$DETEKT_BIN_DIR/${id}_version.txt"
 
   mkdir -p "$DETEKT_BIN_DIR"
 
-  print_info $P_TAG "downloading detekt-twitter-compose $detekt_twitter_compose_version"
-  local detekt_twitter_compose_url="https://github.com/twitter/compose-rules/releases/download/v$detekt_twitter_compose_version/detekt-twitter-compose-$detekt_twitter_compose_version-all.jar"
-  download_file "$detekt_twitter_compose_url" "$DETEKT_TWITTER_COMPOSE_JAR_PATH"
-  echo "$detekt_twitter_compose_version" >"$DETEKT_TWITTER_COMPOSE_VERSION_PATH"
-  print_success $P_TAG "detekt-twitter-compose $detekt_twitter_compose_version successfully downloaded"
+  local current_version
+  if [[ $force_bump != "force" && -f "$jar_file" && -f "$version_file" ]]; then
+    read -r current_version <"$version_file"
+  fi
+  if [[ "$version" == "$current_version" ]]; then
+    print_info $P_TAG "$id $version already downloaded, skipping"
+  else
+    print_info $P_TAG "downloading $id $version"
+    download_file "$url" "$jar_file"
+    echo "$version" >"$version_file"
+    print_success $P_TAG "$id $version successfully downloaded"
+  fi
 }
 
 extract_version_from_catalog() {
@@ -98,9 +85,9 @@ download_file() {
   local url=$1
   local output=$2
   if command -v curl >/dev/null 2>&1; then
-    curl -L "$url" -o "$output"
+    curl -sSL "$url" -o "$output"
   elif command -v wget >/dev/null 2>&1; then
-    wget "$url" -O "$output"
+    wget -q "$url" -O "$output"
   else
     print_error $P_TAG "no 'curl' or 'wget' installed"
     exit 1
