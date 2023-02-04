@@ -49,12 +49,16 @@ run_kotlin_linter() {
   local detekt_dir="$ROOT_DIR/detekt"
   local detekt_bin_dir="$detekt_dir/bin"
   local detekt_cli_jar="$detekt_bin_dir/detekt_cli.jar"
+  local detekt_formatting_jar="$detekt_bin_dir/detekt_formatting.jar"
   local detekt_twitter_compose_jar="$detekt_bin_dir/detekt_twitter_compose.jar"
-  if [[ ! -f "$detekt_cli_jar" || ! -f "$detekt_twitter_compose_jar" ]]; then
-    print_error "$P_TAG" "detekt-cli jars required to verify Kotlin files, have you run './scripts/tuner.sh'?"
+  if [[ ! -f "$detekt_cli_jar" || ! -f "$detekt_formatting_jar" || ! -f "$detekt_twitter_compose_jar" ]]; then
+    print_error "$P_TAG" "detekt jars in 'detekt/bin' required to verify Kotlin files, have you run './scripts/tuner.sh'?"
     exit 1
   fi
-  java -jar "$detekt_cli_jar" -p "$detekt_twitter_compose_jar" --config "$detekt_dir/config.yml"
+  java -jar "$detekt_cli_jar" \
+    --plugins "$detekt_twitter_compose_jar,$detekt_formatting_jar" \
+    --config "$detekt_dir/config.yml" \
+    --jvm-target "1.8"
 }
 
 main
