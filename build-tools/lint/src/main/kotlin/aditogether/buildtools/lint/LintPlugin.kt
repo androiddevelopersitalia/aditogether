@@ -12,19 +12,19 @@ import org.gradle.api.Project
 class LintPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
-        target.configureDetekt()
+        configureDetekt(target)
     }
 }
 
-private fun Project.configureDetekt() {
-    applyPlugin<DetektPlugin>()
+private fun configureDetekt(target: Project) {
+    target.applyPlugin<DetektPlugin>()
 
-    tasks.withType<Detekt> {
-        config.setFrom("${rootDir.path}/detekt/config.yml")
+    target.tasks.withType<Detekt> {
+        config.setFrom("${target.rootDir.path}/detekt/config.yml")
     }
 
-    dependencies.add(
+    target.dependencies.add(
         "detektPlugins",
-        libsCatalog.findLibrary("detekt-rules-compose").get()
+        target.libsCatalog.findLibrary("detekt-rules-compose").get()
     )
 }
