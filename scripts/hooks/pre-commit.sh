@@ -58,7 +58,11 @@ run_kotlin_linter() {
   java -jar "$detekt_cli_jar" \
     --plugins "$detekt_twitter_compose_jar,$detekt_formatting_jar" \
     --config "$detekt_dir/config.yml" \
-    --jvm-target "1.8"
+    --jvm-target "1.8" || {
+    print_error "$P_TAG" "kotlin lint checks failed, please check the errors and commit again"
+    exit 1
+  }
+  print_success "$P_TAG" "kotlin lint checks successful"
 }
 
 main
