@@ -20,7 +20,9 @@ private fun configureDetekt(target: Project) {
     target.applyPlugin<DetektPlugin>()
 
     target.tasks.withType<Detekt> {
+        autoCorrect = true
         config.setFrom("${target.rootDir.path}/detekt/config.yml")
+        jvmTarget = "1.8"
     }
 
     target.dependencies.add(

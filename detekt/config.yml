@@ -1,5 +1,3 @@
-version: 2
-
 build:
   maxIssues: 0
   excludeCorrectable: false
@@ -10,12 +8,7 @@ build:
   # comments: 1
 
 config:
-  autoCorrect: true
-  buildUponDefaultConfig: false
   excludes: ''
-  jvmTarget: '11'
-  # let the build succeed if there are errors, this is needed since clients can have a rule-set for a newer
-  #  Detekt version
   validation: true
   warningsAsErrors: true
 
