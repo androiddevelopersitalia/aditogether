@@ -1,3 +1,5 @@
 rootProject.name = "aditogether"
 
 includeBuild 'build-tools'
+
+include 'playground'
