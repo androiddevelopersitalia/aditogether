@@ -724,8 +724,8 @@ style:
   FunctionOnlyReturningConstant:
     active: true
     ignoreOverridableFunction: true
-    excludedFunctions: 'describeContents'
-    excludeAnnotatedFunction: "dagger.Provides"
+    excludedFunctions: ['describeContents']
+    excludeAnnotatedFunction: ''
   LibraryCodeMustSpecifyReturnType:
     active: false
     # excludes: ['**']
@@ -838,7 +838,7 @@ style:
   ReturnCount:
     active: true
     max: 3
-    excludedFunctions: ''
+    excludedFunctions: []
     excludeLabeled: false
     excludeReturnFromLambda: true
     excludeGuardClauses: true
