@@ -29,6 +29,7 @@ main() {
   local force_bump="$1"
   if [[ $force_bump == "force" ]]; then
     bump_detekt "$new_detekt_version"
+    bump_detekt_formatting "$new_detekt_version"
     bump_detekt_twitter_compose "$new_detekt_twitter_compose_version"
     exit 0
   fi
@@ -40,6 +41,7 @@ main() {
     print_info $P_TAG "detekt-cli $new_detekt_version already downloaded, skipping"
   else
     bump_detekt "$new_detekt_version"
+    bump_detekt_formatting "$new_detekt_version"
   fi
 
   if [[ -f "$DETEKT_TWITTER_COMPOSE_JAR_PATH" && -f "$DETEKT_TWITTER_COMPOSE_VERSION_PATH" ]]; then
@@ -61,6 +63,17 @@ bump_detekt() {
   local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-cli-$detekt_version-all.jar"
   download_file "$detekt_cli_url" "$DETEKT_CLI_JAR_PATH"
   print_success $P_TAG "detekt-cli $detekt_version successfully downloaded"
+}
+
+bump_detekt_formatting() {
+   detekt_version=$1
+
+    mkdir -p "$DETEKT_BIN_DIR"
+
+    print_info $P_TAG "downloading detekt-formatting $detekt_version"
+    local detekt_cli_url="https://github.com/detekt/detekt/releases/download/v$detekt_version/detekt-formatting-$detekt_version.jar"
+    download_file "$detekt_cli_url" "$DETEKT_BIN_DIR/detekt_formatting.jar"
+    print_success $P_TAG "detekt-formatting $detekt_version successfully downloaded"
 }
 
 bump_detekt_twitter_compose() {
