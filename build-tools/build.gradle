@@ -1,6 +1,3 @@
 allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
+    apply from: rootProject.file("repositories.gradle")
 }
