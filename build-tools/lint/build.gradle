@@ -1,7 +1,7 @@
-plugins {
-    alias(libs.plugins.kotlin.jvm)
-    id 'java-gradle-plugin'
-}
+group = "aditogether.buildtools.lint"
+
+apply plugin: "java-gradle-plugin"
+apply plugin: "org.jetbrains.kotlin.jvm"
 
 gradlePlugin {
     plugins {
