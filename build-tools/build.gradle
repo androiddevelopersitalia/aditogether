@@ -1,3 +1,11 @@
+buildscript {
+    apply from: rootProject.file("repositories.gradle"), to: buildscript
+
+    dependencies {
+        classpath libs.gradle.kotlin
+    }
+}
+
 allprojects {
     apply from: rootProject.file("repositories.gradle")
 }
