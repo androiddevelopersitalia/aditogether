@@ -1,7 +1,7 @@
 package aditogether.buildtools.lint
 
 import aditogether.buildtools.lint.util.detektPlugins
-import aditogether.buildtools.utils.applyPlugin
+import aditogether.buildtools.utils.apply
 import aditogether.buildtools.utils.libsCatalog
 import aditogether.buildtools.utils.withType
 import io.gitlab.arturbosch.detekt.Detekt
@@ -18,7 +18,7 @@ class LintPlugin : Plugin<Project> {
 }
 
 private fun configureDetekt(target: Project) {
-    target.applyPlugin<DetektPlugin>()
+    target.pluginManager.apply<DetektPlugin>()
 
     target.tasks.withType<Detekt> {
         autoCorrect = true
