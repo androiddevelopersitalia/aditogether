@@ -9,4 +9,5 @@ buildscript {
 
 allprojects {
     apply from: rootProject.file("build-tools/repositories.gradle")
+    apply plugin: "aditogether.lint"
 }
