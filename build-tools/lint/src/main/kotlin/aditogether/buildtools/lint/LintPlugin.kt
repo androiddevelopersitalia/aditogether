@@ -13,7 +13,10 @@ import org.gradle.api.Project
 class LintPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
-        configureDetekt(target)
+        target.pluginManager.withPlugin("kotlin") {
+            // Detekt should be applied only on Kotlin modules.
+            configureDetekt(target)
+        }
     }
 }
 
