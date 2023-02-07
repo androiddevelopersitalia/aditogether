@@ -6,6 +6,7 @@ androidxLifecycle = "2.5.1"
 detekt = "1.22.0"
 detektRulesCompose = "0.0.26"
 gradleAndroidPlugin = "7.3.1"
+gradleLintPlugin = "18.0.1"
 koin = "3.3.2"
 koinAnnotation = "1.1.0"
 koinCompose = "3.4.1"
@@ -34,6 +35,7 @@ androidx-ktx = { module = "androidx.core:core-ktx", version.ref = "androidxCore"
 detekt-rules-compose = { module = "com.twitter.compose.rules:detekt", version.ref = "detektRulesCompose" }
 detekt-rules-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
 kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinCoroutines" }
@@ -55,6 +57,7 @@ gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gra
 gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+gradle-lint = { module = "com.netflix.nebula:gradle-lint-plugin", version.ref = "gradleLintPlugin" }
 
 [bundles]
 # TBD
