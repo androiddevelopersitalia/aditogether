@@ -3,6 +3,7 @@ package aditogether.buildtools.lint
 import aditogether.buildtools.lint.util.detektPlugins
 import aditogether.buildtools.utils.apply
 import aditogether.buildtools.utils.libsCatalog
+import aditogether.buildtools.utils.withPlugins
 import aditogether.buildtools.utils.withType
 import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.DetektPlugin
@@ -13,7 +14,11 @@ import org.gradle.api.Project
 class LintPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
-        target.pluginManager.withPlugin("kotlin") {
+        target.pluginManager.withPlugins(
+            "kotlin",
+            "kotlin-android",
+            "kotlin-multiplatform"
+        ) {
             // Detekt should be applied only on Kotlin modules.
             configureDetekt(target)
         }
