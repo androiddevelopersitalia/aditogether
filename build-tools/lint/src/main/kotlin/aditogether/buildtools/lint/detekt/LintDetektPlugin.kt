@@ -17,10 +17,10 @@ internal class LintDetektPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply<DetektPlugin>()
 
-        target.tasks.withType<Detekt> {
-            autoCorrect = true
-            config.setFrom("${target.rootDir.path}/detekt/config.yml")
-            jvmTarget = "1.8"
+        target.tasks.withType<Detekt> { task ->
+            task.autoCorrect = true
+            task.config.setFrom("${target.rootDir.path}/detekt/config.yml")
+            task.jvmTarget = "1.8"
         }
 
         val catalog = target.libsCatalog
