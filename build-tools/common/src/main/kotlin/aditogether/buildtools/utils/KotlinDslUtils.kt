@@ -3,8 +3,6 @@
 package aditogether.buildtools.utils
 
 import org.gradle.api.DomainObjectCollection
-import org.gradle.api.UnknownDomainObjectException
-import org.gradle.api.plugins.ExtensionContainer
 
 /**
  * Returns a collection containing the objects in this collection of the given type. Equivalent to calling
@@ -19,12 +17,3 @@ import org.gradle.api.plugins.ExtensionContainer
 inline fun <reified S : Any> DomainObjectCollection<in S>.withType(
     noinline configuration: S.() -> Unit
 ): DomainObjectCollection<S> = withType(S::class.java, configuration)
-
-/**
- * Looks for the extension of a given type.
- *
- * @param T the extension type
- * @return the extension
- * @throws UnknownDomainObjectException when no matching extension can be found
- */
-inline fun <reified T : Any> ExtensionContainer.getByType(): T = getByType(T::class.java)
