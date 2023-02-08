@@ -3,6 +3,7 @@ buildscript {
 
     dependencies {
         classpath libs.gradle.kotlin
+        classpath libs.gradle.aditogether.jvm
         classpath libs.gradle.aditogether.lint
     }
 }
