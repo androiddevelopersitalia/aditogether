@@ -1,0 +1,19 @@
+group = "aditogether.buildtools.jvm"
+
+apply plugin: "java-gradle-plugin"
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+gradlePlugin {
+    plugins {
+        jvm {
+            id = 'aditogether.jvm'
+            displayName = 'AdiTogether JVM Plugin'
+            implementationClass = 'aditogether.buildtools.jvm.JvmPlugin'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':common')
+    implementation libs.gradle.kotlin
+}
