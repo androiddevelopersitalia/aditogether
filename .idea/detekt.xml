@@ -7,5 +7,10 @@
       </set>
     </option>
     <option name="enableFormatting" value="true" />
+    <option name="pluginJarPaths">
+      <set>
+        <option value="$PROJECT_DIR$/detekt/rules/build/libs/rules.jar" />
+      </set>
+    </option>
   </component>
 </project>
