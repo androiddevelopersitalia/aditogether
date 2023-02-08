@@ -9,6 +9,7 @@ gradleAndroidPlugin = "7.3.1"
 koin = "3.3.2"
 koinAnnotation = "1.1.0"
 koinCompose = "3.4.1"
+kotest = "5.5.5"
 kotlin = "1.8.0"
 kotlinCoroutines = "1.6.4"
 ktor = "2.2.3"
@@ -40,6 +41,9 @@ koin-annotations = { module = "io.insert-koin:koin-annotations", version.ref = "
 koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koinCompose" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
+
+kotest-assertions = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
 kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinCoroutines" }
