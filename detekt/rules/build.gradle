@@ -2,7 +2,14 @@ apply plugin: "org.jetbrains.kotlin.jvm"
 
 dependencies {
     compileOnly(libs.detekt.api)
+
     testImplementation(libs.detekt.test)
+    testImplementation(libs.kotest.assertions)
+    testImplementation(libs.kotest.runner)
+}
+
+test {
+    useJUnitPlatform()
 }
 
 java.sourceCompatibility = JavaVersion.VERSION_1_8
