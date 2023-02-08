@@ -1,6 +1,8 @@
 rootProject.name = 'build-tools'
 
-include 'common', 'lint'
+include 'common'
+include 'jvm'
+include 'lint'
 
 dependencyResolutionManagement {
     versionCatalogs {
