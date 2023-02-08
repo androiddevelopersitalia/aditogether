@@ -25,7 +25,11 @@ main() {
     *.sh) bash_files+=("$abs_file_path") ;;
     *.kt) kt_files+=("$abs_file_path") ;;
     esac
-  done < <(git diff --cached --name-only -z -- "*.sh" "*.kt") # Filters files for perf reasons.
+  done < <(
+    # Filters files by extensions for perf reasons.
+    # Filters only added, modified and renamed files.
+    git diff --cached --name-only -z --diff-filter=AMR -- "*.sh" "*.kt"
+  )
 
   [[ ${#bash_files[@]} -gt 0 ]] && run_bash_linter "${bash_files[@]}"
   [[ ${#kt_files[@]} -gt 0 ]] && run_kotlin_linter "${kt_files[@]}"
