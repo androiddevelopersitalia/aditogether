@@ -17,5 +17,5 @@ local.properties
 .idea/vcs.xml
 .idea/workspace.xml
 
-# Detekt CLI files downloaded by `scripts/linters/download_detekt_cli.sh`.
+# Detekt CLI files downloaded by `scripts/linters/bump_detekt_cli.sh`.
 /detekt/bin

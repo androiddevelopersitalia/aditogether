@@ -6,13 +6,13 @@
 # The output is cached and will be invalidated only upon version changes.
 # The version is extracted from our Gradle Version Catalog (`gradle/libs.versions.toml`).
 # To force the invalidation you can invoke this script with the `force` argument:
-# `./scripts/detekt/download_detekt_cli.sh force`
+# `./scripts/detekt/bump_detekt_cli.sh force`
 #
 
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 source "$SCRIPT_DIR/../common/common.sh"
 
-P_TAG="download-detekt-cli"
+P_TAG="bump-detekt-cli"
 
 ROOT_DIR="$SCRIPT_DIR/../.."
 VERSION_CATALOG_PATH="$ROOT_DIR/gradle/libs.versions.toml"
@@ -66,7 +66,7 @@ bump_detekt_jar() {
     read -r current_version <"$version_file"
   fi
   if [[ "$version" == "$current_version" ]]; then
-    print_info $P_TAG "$id $version already downloaded, skipping"
+    print_info $P_TAG "$id $version up-to-date"
   else
     print_info $P_TAG "downloading $id $version"
     download_file "$url" "$jar_file"
