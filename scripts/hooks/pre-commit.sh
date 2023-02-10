@@ -53,15 +53,22 @@ run_kotlin_linter() {
   local detekt_dir="$ROOT_DIR/detekt"
   local detekt_bin_dir="$detekt_dir/bin"
   local detekt_cli_jar="$detekt_bin_dir/detekt_cli.jar"
-  local detekt_formatting_jar="$detekt_bin_dir/detekt_formatting.jar"
-  local detekt_twitter_compose_jar="$detekt_bin_dir/detekt_twitter_compose.jar"
-  if [[ ! -f "$detekt_cli_jar" || ! -f "$detekt_formatting_jar" || ! -f "$detekt_twitter_compose_jar" ]]; then
-    print_error "$P_TAG" "detekt jars in 'detekt/bin' required to verify Kotlin files, have you run './scripts/tuner.sh'?"
-    exit 1
-  fi
+  local detekt_plugins_jars=(
+    "$detekt_bin_dir/detekt_formatting.jar"
+    "$detekt_bin_dir/detekt_twitter_compose.jar"
+  )
+
+  local detekt_plugins_input kotlin_files_input
+  detekt_plugins_input=$(arr_join_to_str "${detekt_plugins_jars[@]}")
   kotlin_files_input=$(arr_join_to_str "$@")
+
+  "$ROOT_DIR/scripts/linters/bump_detekt_cli.sh" || {
+    print_error "$P_TAG" "detekt jars bumping failed"
+    exit 1
+  }
+
   java -jar "$detekt_cli_jar" \
-    --plugins "$detekt_twitter_compose_jar,$detekt_formatting_jar" \
+    --plugins "$detekt_plugins_input" \
     --config "$detekt_dir/config.yml" \
     --jvm-target "1.8" \
     --input "$kotlin_files_input" || {
