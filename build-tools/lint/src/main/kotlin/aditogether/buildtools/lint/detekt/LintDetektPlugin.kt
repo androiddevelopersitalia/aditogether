@@ -26,10 +26,15 @@ internal class LintDetektPlugin : Plugin<Project> {
         target.dependencies.apply {
             addDetektPlugin(catalog, plugin = "detekt-rules-compose")
             addDetektPlugin(catalog, plugin = "detekt-rules-formatting")
+            addDetektPlugin(target.rootProject.project(":detekt:rules"))
         }
     }
 
     private fun DependencyHandler.addDetektPlugin(catalog: VersionCatalog, plugin: String) {
         add("detektPlugins", catalog.findLibrary(plugin).get())
+    }
+
+    private fun DependencyHandler.addDetektPlugin(plugin: Project) {
+        add("detektPlugins", plugin)
     }
 }
