@@ -40,6 +40,12 @@ prompt_yes_no() {
   done
 }
 
+arr_join_to_str() {
+  local input_arr=("$@")
+  IFS=,
+  printf "%s" "${input_arr[*]}"
+}
+
 __print_prompt() {
   local tag=$1
   local msg=$2

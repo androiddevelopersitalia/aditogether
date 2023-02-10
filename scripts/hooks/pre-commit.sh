@@ -59,16 +59,12 @@ run_kotlin_linter() {
     print_error "$P_TAG" "detekt jars in 'detekt/bin' required to verify Kotlin files, have you run './scripts/tuner.sh'?"
     exit 1
   fi
-  kotlin_files=("$@")
-  detekt_input=$(
-    IFS=,
-    printf "%s" "${kotlin_files[*]}"
-  )
+  kotlin_files_input=$(arr_join_to_str "$@")
   java -jar "$detekt_cli_jar" \
     --plugins "$detekt_twitter_compose_jar,$detekt_formatting_jar" \
     --config "$detekt_dir/config.yml" \
     --jvm-target "1.8" \
-    --input "$detekt_input" || {
+    --input "$kotlin_files_input" || {
     print_error "$P_TAG" "kotlin lint checks failed, please check the errors and commit again"
     exit 1
   }
