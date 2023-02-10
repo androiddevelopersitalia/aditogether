@@ -55,6 +55,7 @@ ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 
+gradle-aditogether-android = { module = "aditogether.buildtools.android:android" }
 gradle-aditogether-jvm = { module = "aditogether.buildtools.jvm:jvm" }
 gradle-aditogether-lint = { module = "aditogether.buildtools.lint:lint" }
 gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }

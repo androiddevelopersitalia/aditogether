@@ -2,7 +2,9 @@ buildscript {
     apply from: rootProject.file("build-tools/repositories.gradle"), to: buildscript
 
     dependencies {
+        classpath libs.gradle.android
         classpath libs.gradle.kotlin
+        classpath libs.gradle.aditogether.android
         classpath libs.gradle.aditogether.jvm
         classpath libs.gradle.aditogether.lint
     }
