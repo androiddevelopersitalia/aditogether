@@ -9,7 +9,9 @@ class AdiTogetherRuleSetProvider : RuleSetProvider {
     override val ruleSetId: String = "AdiTogether"
 
     override fun instance(config: Config) = RuleSet(
-        ruleSetId,
-        listOf()
+        id = ruleSetId,
+        rules = listOf(
+            ForbiddenLocalFunction()
+        )
     )
 }

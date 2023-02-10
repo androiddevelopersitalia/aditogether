@@ -974,3 +974,8 @@ TwitterCompose:
   # https://twitter.github.io/compose-rules/rules/#viewmodels
   ViewModelInjection:
     active: true
+
+AdiTogether:
+  active: true
+  ForbiddenLocalFunction:
+    active: true
