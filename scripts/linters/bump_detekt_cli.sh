@@ -25,10 +25,22 @@ main() {
   new_detekt_version=$(extract_version_from_catalog "detekt")
   new_detekt_twitter_compose_version=$(extract_version_from_catalog "detektRulesCompose")
 
+  local pids=()
   bump_detekt_cli "$new_detekt_version" &
+  pids+=($!)
   bump_detekt_formatting "$new_detekt_version" &
+  pids+=($!)
   bump_detekt_twitter_compose "$new_detekt_twitter_compose_version" &
-  wait
+  pids+=($!)
+
+  local failed_processes=0
+  for pid in "${pids[@]}"; do
+    # If the command fails, increment the failed_processes count.
+    wait "$pid" || ((failed_processes++))
+  done
+
+  # If at least one process failed, reflect the failure with a non-zero exit status.
+  exit "$failed_processes"
 }
 
 bump_detekt_cli() {
