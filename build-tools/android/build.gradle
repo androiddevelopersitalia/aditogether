@@ -1,0 +1,11 @@
+group = "aditogether.buildtools.android"
+
+apply plugin: "java-gradle-plugin"
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+dependencies {
+    implementation project(':common')
+    implementation project(':jvm')
+    implementation libs.gradle.android.api
+    implementation libs.gradle.kotlin
+}
