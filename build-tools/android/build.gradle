@@ -5,6 +5,10 @@ apply plugin: "org.jetbrains.kotlin.jvm"
 
 gradlePlugin {
     plugins {
+        app {
+            id = 'aditogether.android.app'
+            implementationClass = 'aditogether.buildtools.android.AndroidAppPlugin'
+        }
         library {
             id = 'aditogether.android.library'
             implementationClass = 'aditogether.buildtools.android.AndroidLibraryPlugin'
