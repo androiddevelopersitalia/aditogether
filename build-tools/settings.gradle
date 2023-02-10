@@ -1,5 +1,6 @@
 rootProject.name = 'build-tools'
 
+include 'android'
 include 'common'
 include 'jvm'
 include 'lint'
