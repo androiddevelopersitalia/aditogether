@@ -7,6 +7,7 @@ buildscript {
         classpath libs.gradle.aditogether.android
         classpath libs.gradle.aditogether.jvm
         classpath libs.gradle.aditogether.lint
+        classpath libs.gradle.aditogether.multiplatform
     }
 }
 
