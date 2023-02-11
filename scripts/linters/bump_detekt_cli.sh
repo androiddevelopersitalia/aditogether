@@ -32,6 +32,8 @@ main() {
   pids+=($!)
   bump_detekt_twitter_compose "$new_detekt_twitter_compose_version" &
   pids+=($!)
+  bump_local_jars &
+  pids+=($!)
 
   local failed_processes=0
   for pid in "${pids[@]}"; do
@@ -84,6 +86,33 @@ bump_detekt_jar() {
     download_file "$url" "$jar_file"
     echo "$version" >"$version_file"
     print_success $P_TAG "$id $version successfully downloaded"
+  fi
+}
+
+bump_local_jars() {
+  local local_rules_dir="$ROOT_DIR/detekt/rules/"
+  local local_rules_hash_file="$DETEKT_BIN_DIR/detekt_local_rules_hash.txt"
+  local local_rules_jar="$local_rules_dir/build/libs/rules.jar"
+
+  mkdir -p "$DETEKT_BIN_DIR"
+
+  local cached_commit_hash
+  if [[ $force_bump != "force" && -f "$local_rules_jar" && -f "$local_rules_hash_file" ]]; then
+    read -r cached_commit_hash <"$local_rules_hash_file"
+  fi
+
+  local local_rules_commit_hash
+  local_rules_commit_hash="$(git log --pretty=format:'%H' -n 1 "$local_rules_dir")"
+  if [[ "$local_rules_commit_hash" == "$cached_commit_hash" ]]; then
+    print_info $P_TAG "local rules jars up-to-date"
+  else
+    print_info $P_TAG "generating local rules jars"
+    (cd "$ROOT_DIR" && ./gradlew :detekt:rules:jar) || {
+      print_error $P_TAG "failed to generate local rules jars"
+      exit 1
+    }
+    echo "$local_rules_commit_hash" >"$local_rules_hash_file"
+    print_success $P_TAG "local rules jars successfully generated"
   fi
 }
 
