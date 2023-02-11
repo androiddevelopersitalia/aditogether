@@ -58,6 +58,7 @@ ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref
 gradle-aditogether-android = { module = "aditogether.buildtools.android:android" }
 gradle-aditogether-jvm = { module = "aditogether.buildtools.jvm:jvm" }
 gradle-aditogether-lint = { module = "aditogether.buildtools.lint:lint" }
+gradle-aditogether-multiplatform = { module = "aditogether.buildtools.multiplatform:multiplatform" }
 gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
 gradle-android-api = { module = "com.android.tools.build:gradle-api", version.ref = "gradleAndroidPlugin" }
 gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
