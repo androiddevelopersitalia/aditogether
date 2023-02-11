@@ -697,8 +697,8 @@ style:
     allowedPatterns: ''
   ForbiddenImport:
     active: true
-    imports: ['junit.framework.TestCase.*', 'org.junit.Assert.*', 'org.junit.framework.Assert.*', 'org.junit.Test']
-    forbiddenPatterns: ''
+    imports: []
+    forbiddenPatterns: 'io\.kotest\.core\.spec\.style\.(?!BehaviorSpec)'
   ForbiddenMethodCall:
     active: true
     methods: ['app.cash.sqldelight.Transacter.transaction', 'app.cash.sqldelight.Transacter.transactionWithResult']
