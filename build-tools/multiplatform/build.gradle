@@ -1,0 +1,10 @@
+group = "aditogether.buildtools.multiplatform"
+
+apply plugin: "java-gradle-plugin"
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+dependencies {
+    implementation project(':common')
+    implementation project(':jvm')
+    implementation libs.gradle.kotlin
+}

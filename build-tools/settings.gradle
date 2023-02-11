@@ -4,6 +4,7 @@ include 'android'
 include 'common'
 include 'jvm'
 include 'lint'
+include 'multiplatform'
 
 dependencyResolutionManagement {
     versionCatalogs {
