@@ -21,7 +21,7 @@ class ForbiddenLocalFunctionTest : BehaviorSpec({
         When("linting the file") {
             val findings = rule.lint(code)
 
-            Then("it should report a nested function") {
+            Then("it should report a local function") {
                 findings shouldHaveSize 1
             }
         }
@@ -41,7 +41,24 @@ class ForbiddenLocalFunctionTest : BehaviorSpec({
         When("linting the file") {
             val findings = rule.lint(code)
 
-            Then("it should not report any nested functions") {
+            Then("it should not report any local functions") {
+                findings shouldHaveSize 0
+            }
+        }
+    }
+
+    Given("a file with lambda function inside a function") {
+        val code = """
+            fun foo() {
+                val bar = { println("bar") }
+                bar()
+            }
+        """.trimIndent()
+
+        When("linting the file") {
+            val findings = rule.lint(code)
+
+            Then("it should not report any local functions") {
                 findings shouldHaveSize 0
             }
         }
