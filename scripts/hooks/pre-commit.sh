@@ -56,6 +56,7 @@ run_kotlin_linter() {
   local detekt_plugins_jars=(
     "$detekt_bin_dir/detekt_formatting.jar"
     "$detekt_bin_dir/detekt_twitter_compose.jar"
+    "$detekt_dir/rules/build/libs/rules.jar"
   )
 
   local detekt_plugins_input kotlin_files_input
