@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #
-# Downloads the necessary Detekt jars to perform checks without invoking Gradle.
+# Downloads or generates the necessary Detekt jars to perform checks without invoking Gradle.
 # This script will output in `detekt/bin/` which is excluded in our .gitignore.
 # The output is cached and will be invalidated only upon version changes.
-# The version is extracted from our Gradle Version Catalog (`gradle/libs.versions.toml`).
+# The remote jars versions are extracted from our Gradle Version Catalog (`gradle/libs.versions.toml`).
 # To force the invalidation you can invoke this script with the `force` argument:
 # `./scripts/detekt/bump_detekt_cli.sh force`
 #
