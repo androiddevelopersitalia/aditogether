@@ -1,0 +1,18 @@
+name: Push workflow
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+
+  lint:
+    name: Run linters
+    uses: ./.github/workflows/lint.yml
+    secrets: inherit
+
+  tests:
+    name: Run tests
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
