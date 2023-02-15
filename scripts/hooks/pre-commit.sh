@@ -69,6 +69,7 @@ run_kotlin_linter() {
   }
 
   java -jar "$detekt_cli_jar" \
+    --auto-correct \
     --plugins "$detekt_plugins_input" \
     --config "$detekt_dir/config.yml" \
     --jvm-target "11" \
