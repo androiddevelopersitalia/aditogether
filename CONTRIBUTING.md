@@ -3,7 +3,7 @@
 The purpose of this page is to provide you with the minimum valuable information about how to contribute to the
 project.
 
-### How reach us 🗞
+### How to reach us 🗞
 
 - you can join the slack community [here](https://androiddevs.it/)
 - and follow the open [discussion on the repository](https://github.com/androiddevelopersitalia/aditogether/discussions)
@@ -13,6 +13,7 @@ project.
 - Have a JDK >= 11 installed (even the bundled one with AS/IJ)
 - Clone the repository
 - Run `./scripts/tuner.sh` to set up the local tools used by this repository
+- Make sure to install the required IDEA plugins, from the pop-up shown when the project is opened, to have a smoother experience in the IDE
 
 ### Branch & commits convention 📙
 
@@ -36,7 +37,7 @@ __Note:__ code reviews are ___mandatory___, if you are pushing your contribution
 
 ### Lint & Static code analysis 🎨
 
-We love to keep our code clean and consistent, so we have decided to integrate a plugin which validate it. The detekt
+We love to keep our code clean and consistent, so we have decided to integrate a plugin which validates it. The detekt
 configuration is available [here](https://github.com/androiddevelopersitalia/aditogether/blob/main/detekt/config.yml).
 
-__Note:__ if you have installed the `tuner.sh` script, all these checks are execute on pre-commit.
+__Note:__ if you have run `./scripts/tuner.sh`, all these checks are executed on pre-commit.
