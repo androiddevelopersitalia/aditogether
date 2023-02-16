@@ -12,8 +12,10 @@ project.
 
 - Have a JDK >= 11 installed (even the bundled one with AS/IJ)
 - Clone the repository
-- Run `./scripts/tuner.sh` to set up the local tools used by this repository
-- Make sure to install the required IDEA plugins, from the pop-up shown when the project is opened, to have a smoother experience in the IDE
+- Run `./scripts/tuner.sh` to set up the local tools used by this repository: this script will perform some
+  environmental checks and help to follow our guidelines (e.g. installing Git hooks)
+- Make sure to install the required IDEA plugins, from the pop-up shown when the project is opened, to have a smoother
+  experience in the IDE
 
 ### Branch & commits convention 📙
 
@@ -24,13 +26,13 @@ For instance if you are working on a new feature the branch name must have the `
 the feature:
 
 ```
-feat/1-adding-profile-section
+feat/1-add-profile-section
 ```
 
 The same thing for the commit message:
 
 ```shell
-git commit -m "feat(profile): implemented profile section"
+git commit -m "feat(profile): implement profile section"
 ```
 
 __Note:__ code reviews are ___mandatory___, if you are pushing your contribution, you must create a pull request.
