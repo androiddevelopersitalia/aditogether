@@ -4,9 +4,9 @@ on: workflow_call
 
 jobs:
 
-  detekt:
+  kotlin:
 
-    name: Lint with Detekt
+    name: Lint Kotlin files
     runs-on: ubuntu-latest
     steps:
 
