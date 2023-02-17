@@ -18,3 +18,15 @@ jobs:
 
       - name: Detekt analysis
         run: ./gradlew detekt
+
+  shell:
+    name: Lint Shell files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: ShellCheck analysis
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./scripts"
