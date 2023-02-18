@@ -9,6 +9,10 @@ on:
       - main
 
 jobs:
+  sanity-checks:
+    name: Run sanity checks
+    uses: ./.github/workflows/sanity-checks.yml
+    secrets: inherit
 
   lint:
     name: Run linters

@@ -1,0 +1,23 @@
+name: Sanity checks
+
+on: workflow_call
+
+jobs:
+  validate-commit-messages:
+    name: Validate commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code - push
+        uses: actions/checkout@v3
+        if: ${{ github.event_name == 'push' }}
+      - name: Check out repository code - PR
+        uses: actions/checkout@v3
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          # This checks out the HEAD commit of the PR instead of the merge commit.
+          ref: ${{ github.event.pull_request.head.sha }}
+          # Fetches all the commits of the PR to validate them.
+          fetch-depth: ${{ github.event.pull_request.commits }}
+
+      - name: Validate commit messages
+        run: ./scripts/ci/validate-commit-messages.sh
