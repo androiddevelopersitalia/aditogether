@@ -24,16 +24,22 @@ main() {
     case "$relative_file_path" in
     *.sh) bash_files+=("$abs_file_path") ;;
     *.kt) kt_files+=("$abs_file_path") ;;
+    *.gradle.kts) fail_on_gradle_kts_files ;;
     esac
   done < <(
     # Filters files by extensions for perf reasons.
     # Filters only added, modified and renamed files.
-    git diff --cached --name-only -z --diff-filter=AMR -- "*.sh" "*.kt"
+    git diff --cached --name-only -z --diff-filter=AMR -- "*.sh" "*.kt" "*.gradle.kts"
   )
 
   [[ ${#bash_files[@]} -gt 0 ]] && run_bash_linter "${bash_files[@]}"
   [[ ${#kt_files[@]} -gt 0 ]] && run_kotlin_linter "${kt_files[@]}"
   exit 0
+}
+
+fail_on_gradle_kts_files() {
+   print_error "$P_TAG" "*.gradle.kts files are forbidden, please convert them to *.gradle files"
+   exit 1
 }
 
 run_bash_linter() {
