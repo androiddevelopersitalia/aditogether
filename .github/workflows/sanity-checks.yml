@@ -22,3 +22,13 @@ jobs:
 
       - name: Validate commit messages
         run: ./scripts/ci/validate-commit-messages.sh
+
+  check-invalid-files:
+    name: Check invalid files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Check invalid files
+        run: ./scripts/ci/check-invalid-files.sh
