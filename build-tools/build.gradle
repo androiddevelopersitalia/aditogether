@@ -9,3 +9,7 @@ buildscript {
 allprojects {
     apply from: rootProject.file("repositories.gradle")
 }
+
+subprojects {
+    apply plugin: "org.jetbrains.kotlin.jvm"
+}
