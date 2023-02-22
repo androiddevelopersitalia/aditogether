@@ -10,6 +10,7 @@ project.
 
 ### Set up the project ⚙️
 
+- Have a JDK >= 11 installed (even the bundled one with AS/IJ)
 - Clone the repository
 - Run `./scripts/tuner.sh` to set up the local tools used by this repository: this script will perform some
   environmental checks and help to follow our guidelines (e.g. installing Git hooks)
