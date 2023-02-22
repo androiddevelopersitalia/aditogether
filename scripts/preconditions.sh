@@ -12,6 +12,7 @@ P_TAG="preconditions"
 main() {
   check_os
   check_symlinks_resolver
+  check_java
 }
 
 check_os() {
@@ -27,6 +28,15 @@ check_symlinks_resolver() {
     exit 1
   else
     print_success $P_TAG "symlinks resolver available"
+  fi
+}
+
+check_java() {
+  if [[ -z "$JAVA_HOME" ]]; then
+    print_error $P_TAG "You need to set your JAVA_HOME"
+    exit 1
+  else
+    print_success $P_TAG "JAVA_HOME set correctly"
   fi
 }
 
