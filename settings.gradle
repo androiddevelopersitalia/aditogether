@@ -1,3 +1,10 @@
+pluginManagement {
+    def currentJavaVersion = JavaVersion.current()
+    if (!currentJavaVersion.isJava11Compatible()) {
+        throw new IllegalArgumentException("Java 11 is needed to compile the project. Current: $currentJavaVersion.")
+    }
+}
+
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
 }
