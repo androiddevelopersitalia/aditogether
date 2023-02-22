@@ -13,6 +13,5 @@ gradlePlugin {
 
 dependencies {
     implementation project(':common')
-    implementation project(':jvm')
     implementation libs.gradle.kotlin
 }
