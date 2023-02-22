@@ -1,8 +1,9 @@
 package aditogether.buildtools.multiplatform
 
-import aditogether.buildtools.jvm.JvmOptions
 import aditogether.buildtools.utils.apply
+import aditogether.buildtools.utils.boolProperty
 import aditogether.buildtools.utils.configure
+import aditogether.buildtools.utils.intProperty
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -21,16 +22,25 @@ internal class MultiPlatformPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         target.pluginManager.apply<KotlinMultiplatformPluginWrapper>()
 
+        val javaTarget = target.intProperty("aditogether.jvmOptions.javaTarget")
+        val warningsAsErrors = target.boolProperty("aditogether.jvmOptions.warningsAsErrors")
+
         target.extensions.configure<KotlinMultiplatformExtension> { ext ->
-            ext.targetFromPreset(KotlinJvmTargetPreset(target), ::configureJvmTarget)
+            ext.targetFromPreset(KotlinJvmTargetPreset(target)) {
+                configureJvmTarget(this, javaTarget, warningsAsErrors)
+            }
         }
     }
 
-    private fun configureJvmTarget(target: KotlinJvmTarget) {
+    private fun configureJvmTarget(
+        target: KotlinJvmTarget,
+        javaTarget: Int,
+        warningsAsErrors: Boolean
+    ) {
         target.compilations.all { compilation ->
             compilation.compilerOptions.configure {
-                allWarningsAsErrors.set(JvmOptions.WARNINGS_AS_ERRORS)
-                jvmTarget.set(JvmTarget.fromTarget(JvmOptions.JAVA_VERSION.toString()))
+                allWarningsAsErrors.set(warningsAsErrors)
+                jvmTarget.set(JvmTarget.fromTarget(javaTarget.toString()))
             }
         }
     }
