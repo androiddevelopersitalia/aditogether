@@ -1,7 +1,6 @@
 group = "aditogether.buildtools.android"
 
 apply plugin: "java-gradle-plugin"
-apply plugin: "org.jetbrains.kotlin.jvm"
 
 gradlePlugin {
     plugins {

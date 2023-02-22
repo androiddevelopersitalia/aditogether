@@ -1,5 +1,3 @@
-apply plugin: "org.jetbrains.kotlin.jvm"
-
 dependencies {
     api gradleApi()
 }
