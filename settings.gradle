@@ -15,3 +15,5 @@ includeBuild 'build-tools'
 
 include 'detekt:rules'
 include 'playground'
+include 'shared'
+include 'android:app'

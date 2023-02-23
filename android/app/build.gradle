@@ -1,0 +1,19 @@
+apply plugin: "aditogether.android.app"
+
+android {
+    namespace = "aditogether.android.app"
+
+    buildTypes {
+        named("release")
+
+        named("debug") {
+            applicationIdSuffix ".debug"
+            debuggable true
+        }
+    }
+}
+
+dependencies {
+    implementation project(':shared')
+    implementation libs.androidx.activity
+}

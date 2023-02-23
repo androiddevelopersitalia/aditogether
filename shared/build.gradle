@@ -1,0 +1,58 @@
+import aditogether.buildtools.android.AndroidConfigs
+
+apply plugin: "aditogether.multiplatform"
+apply plugin: "com.android.library"
+
+android {
+    namespace = "aditogether.shared"
+    compileSdk = AndroidConfigs.COMPILE_SDK
+
+    buildTypes {
+        named("release")
+
+        named("debug") {
+            debuggable true
+        }
+    }
+}
+
+kotlin {
+    android()
+
+    iosArm64 {
+        /* Apple iOS on ARM64 platforms (Apple iPhone 5s and newer) */
+        binaries.framework {
+            baseName = "aditogether"
+        }
+    }
+
+    iosX64 {
+        /* Apple iOS simulator on x86_64 platforms */
+        binaries.framework {
+            baseName = "aditogether"
+        }
+    }
+
+    iosSimulatorArm64 {
+        /* Apple iOS simulator on Apple Silicon platforms */
+        binaries.framework {
+            baseName = "aditogether"
+        }
+    }
+
+    sourceSets {
+        commonMain {}
+        commonTest {}
+
+        androidMain {}
+        androidUnitTest {}
+
+        jvmMain {}
+        jvmTest {}
+
+        iosMain { dependsOn(commonMain) }
+        iosX64Main { dependsOn(iosMain) }
+        iosArm64Main { dependsOn(iosMain) }
+        iosSimulatorArm64Main { dependsOn(iosMain) }
+    }
+}
