@@ -1,4 +1,4 @@
-package aditogether.playground.test
+package aditogether.playground.multiplatform
 
 import io.kotest.core.spec.style.BehaviorSpec
 
