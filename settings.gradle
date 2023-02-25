@@ -1,25 +1,12 @@
 pluginManagement {
-    def currentJavaVersion = JavaVersion.current()
-    if (!currentJavaVersion.isJava11Compatible()) {
-        throw new IllegalArgumentException("Java 11 is needed to compile the project. Current: $currentJavaVersion.")
-    }
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
+    apply from: "build-tools/plugin-management.gradle", to: pluginManagement
 }
 
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
 }
 
-dependencyResolutionManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-}
+apply from: "build-tools/dependency-management.gradle"
 
 rootProject.name = "aditogether"
 

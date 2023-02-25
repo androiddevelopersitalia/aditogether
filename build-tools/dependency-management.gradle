@@ -1,0 +1,6 @@
+dependencyResolutionManagement {
+    apply from: "repositories.gradle"
+    configureRepositories(repositories)
+
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+}
