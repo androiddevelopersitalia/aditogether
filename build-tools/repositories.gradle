@@ -1,0 +1,4 @@
+ext.configureRepositories = { RepositoryHandler repositories ->
+    repositories.google()
+    repositories.gradlePluginPortal()
+}

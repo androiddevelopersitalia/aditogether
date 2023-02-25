@@ -1,17 +1,15 @@
+pluginManagement {
+    apply from: "plugin-management.gradle", to: pluginManagement
+}
+
 plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
 }
 
-dependencyResolutionManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+apply from: "dependency-management.gradle"
 
-    versionCatalogs {
-        libs.from files("../gradle/libs.versions.toml")
-    }
+dependencyResolutionManagement.versionCatalogs {
+    libs.from files("../gradle/libs.versions.toml")
 }
 
 rootProject.name = 'build-tools'
