@@ -2,6 +2,18 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
 }
 
+dependencyResolutionManagement {
+    repositories {
+        google()
+        gradlePluginPortal()
+    }
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+    versionCatalogs {
+        libs.from files("../gradle/libs.versions.toml")
+    }
+}
+
 rootProject.name = 'build-tools'
 
 include 'android'
@@ -9,11 +21,3 @@ include 'common'
 include 'jvm'
 include 'lint'
 include 'multiplatform'
-
-dependencyResolutionManagement {
-    versionCatalogs {
-        libs {
-            from files("../gradle/libs.versions.toml")
-        }
-    }
-}
