@@ -1,5 +1,9 @@
 plugins {
-    alias(libs.plugins.aditogether.jvm)
+    alias(libs.plugins.aditogether.android.app)
+}
+
+android {
+    namespace 'aditogether.playground.android'
 }
 
 dependencies {
