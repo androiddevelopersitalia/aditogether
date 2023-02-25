@@ -25,7 +25,7 @@ internal class AndroidPlugin : Plugin<Project> {
         target.tasks.withType<KotlinCompile> { task ->
             // Can't use JVM toolchains yet on Android.
             task.compilerOptions {
-                jvmTarget.set(JvmTarget.valueOf(javaTarget.toString()))
+                jvmTarget.set(JvmTarget.fromTarget(javaTarget.toString()))
                 allWarningsAsErrors.set(warningsAsErrors)
             }
         }
