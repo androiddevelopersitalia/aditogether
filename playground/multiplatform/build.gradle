@@ -1,0 +1,8 @@
+plugins {
+    alias(libs.plugins.aditogether.jvm)
+}
+
+dependencies {
+    testImplementation libs.kotest.assertions
+    testImplementation libs.kotest.runner
+}

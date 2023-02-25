@@ -1,6 +1,6 @@
 @file:Suppress("unused")
 
-package aditogether.playground
+package aditogether.playground.multiplatform
 
 fun test() = Constant
 
