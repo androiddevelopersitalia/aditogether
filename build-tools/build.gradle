@@ -1,15 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-buildscript {
-    apply from: rootProject.file("repositories.gradle"), to: buildscript
-
-    dependencies {
-        classpath libs.gradle.kotlin
-    }
-}
-
-allprojects {
-    apply from: rootProject.file("repositories.gradle")
+plugins {
+    alias(libs.plugins.kotlin.jvm) apply false
 }
 
 final def javaTarget = Integer.parseInt(property("aditogether.jvmOptions.javaTarget"))
