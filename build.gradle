@@ -1,18 +1,13 @@
-buildscript {
-    apply from: rootProject.file("build-tools/repositories.gradle"), to: buildscript
-
-    dependencies {
-        classpath libs.gradle.android
-        classpath libs.gradle.kotlin
-        classpath libs.gradle.aditogether.android
-        classpath libs.gradle.aditogether.jvm
-        classpath libs.gradle.aditogether.lint
-        classpath libs.gradle.aditogether.multiplatform
-    }
+plugins {
+    alias(libs.plugins.aditogether.lint) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.multiplatform) apply false
 }
 
 allprojects {
-    apply from: rootProject.file("build-tools/repositories.gradle")
     apply plugin: "aditogether.lint"
 }
 

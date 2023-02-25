@@ -56,15 +56,22 @@ ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 
-gradle-aditogether-android = { module = "aditogether.buildtools.android:android" }
-gradle-aditogether-jvm = { module = "aditogether.buildtools.jvm:jvm" }
-gradle-aditogether-lint = { module = "aditogether.buildtools.lint:lint" }
-gradle-aditogether-multiplatform = { module = "aditogether.buildtools.multiplatform:multiplatform" }
-gradle-android = { module = "com.android.tools.build:gradle", version.ref = "gradleAndroidPlugin" }
 gradle-android-api = { module = "com.android.tools.build:gradle-api", version.ref = "gradleAndroidPlugin" }
 gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+
+[plugins]
+aditogether-android-app = { id = "aditogether.android.app", version = "?" }
+aditogether-android-library = { id = "aditogether.android.library", version = "?" }
+aditogether-jvm = { id = "aditogether.jvm", version = "?" }
+aditogether-lint = { id = "aditogether.lint", version = "?" }
+aditogether-multiplatform = { id = "aditogether.multiplatform", version = "?" }
+android-application = { id = "com.android.application", version.ref = "gradleAndroidPlugin" }
+android-library = { id = "com.android.library", version.ref = "gradleAndroidPlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
 [bundles]
 # TBD

@@ -1,4 +1,6 @@
-apply plugin: "aditogether.jvm"
+plugins {
+    alias(libs.plugins.aditogether.jvm)
+}
 
 dependencies {
     compileOnly(libs.detekt.api)
