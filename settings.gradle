@@ -14,4 +14,5 @@ apply from: "build-tools/dependency-management.gradle"
 rootProject.name = "aditogether"
 
 include 'detekt:rules'
+include 'playground:android'
 include 'playground:multiplatform'
