@@ -1,6 +1,8 @@
-group = "aditogether.buildtools.android"
+plugins {
+    id "java-gradle-plugin"
+}
 
-apply plugin: "java-gradle-plugin"
+group = "aditogether.buildtools.android"
 
 gradlePlugin {
     plugins {
