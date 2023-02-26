@@ -10,7 +10,7 @@ gradlePlugin {
             id = 'aditogether.android.app'
             implementationClass = 'aditogether.buildtools.android.AndroidAppPlugin'
         }
-        compose {
+        composePlugin {
             id = 'aditogether.android.compose'
             implementationClass = 'aditogether.buildtools.android.AndroidComposePlugin'
         }
