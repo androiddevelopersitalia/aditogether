@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.aditogether.android.app)
+    alias(libs.plugins.aditogether.android.compose)
 }
 
 android {
@@ -7,6 +8,10 @@ android {
 }
 
 dependencies {
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.compose.material
+
     testImplementation libs.kotest.assertions
     testImplementation libs.kotest.runner
 }
