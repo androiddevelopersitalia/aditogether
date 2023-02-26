@@ -7,6 +7,7 @@ androidxLifecycle = "2.5.1"
 detekt = "1.22.0"
 detektRulesCompose = "0.0.26"
 gradleAndroidPlugin = "7.4.1"
+gradleToolchains = "0.4.0"
 koin = "3.3.3"
 koinAnnotation = "1.1.1"
 koinCompose = "3.4.2"
@@ -60,6 +61,7 @@ gradle-android-api = { module = "com.android.tools.build:gradle-api", version.re
 gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
 gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
+gradle-toolchains = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "gradleToolchains" }
 
 [plugins]
 aditogether-android-app = { id = "aditogether.android.app", version = "?" }
