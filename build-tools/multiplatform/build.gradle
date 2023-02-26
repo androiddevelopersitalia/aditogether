@@ -6,7 +6,7 @@ group = "aditogether.buildtools.multiplatform"
 
 gradlePlugin {
     plugins {
-        multiplatform {
+        multiplatformPlugin {
             id = 'aditogether.multiplatform'
             implementationClass = 'aditogether.buildtools.multiplatform.MultiPlatformPlugin'
         }

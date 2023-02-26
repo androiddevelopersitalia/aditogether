@@ -6,7 +6,7 @@ group = "aditogether.buildtools.android"
 
 gradlePlugin {
     plugins {
-        app {
+        appPlugin {
             id = 'aditogether.android.app'
             implementationClass = 'aditogether.buildtools.android.AndroidAppPlugin'
         }
@@ -14,7 +14,7 @@ gradlePlugin {
             id = 'aditogether.android.compose'
             implementationClass = 'aditogether.buildtools.android.AndroidComposePlugin'
         }
-        library {
+        libraryPlugin {
             id = 'aditogether.android.library'
             implementationClass = 'aditogether.buildtools.android.AndroidLibraryPlugin'
         }

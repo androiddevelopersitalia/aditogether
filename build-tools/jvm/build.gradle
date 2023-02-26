@@ -6,9 +6,8 @@ group = "aditogether.buildtools.jvm"
 
 gradlePlugin {
     plugins {
-        jvm {
+        jvmPlugin {
             id = 'aditogether.jvm'
-            displayName = 'AdiTogether JVM Plugin'
             implementationClass = 'aditogether.buildtools.jvm.JvmPlugin'
         }
     }
