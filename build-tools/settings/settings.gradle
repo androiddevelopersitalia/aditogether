@@ -1,0 +1,7 @@
+apply from: "../dependency-management.gradle"
+
+dependencyResolutionManagement.versionCatalogs {
+    libs.from files("../../gradle/libs.versions.toml")
+}
+
+rootProject.name = "settings"
