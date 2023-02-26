@@ -1,16 +1,17 @@
 pluginManagement {
     apply from: "build-tools/plugin-management.gradle", to: pluginManagement
+
+    includeBuild "build-tools/settings"
+    includeBuild "build-tools"
 }
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
+    id "aditogether.settings"
 }
 
 apply from: "build-tools/dependency-management.gradle"
 
 rootProject.name = "aditogether"
-
-includeBuild 'build-tools'
 
 include 'detekt:rules'
 include 'playground'
