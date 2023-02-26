@@ -6,10 +6,8 @@ group = "aditogether.buildtools.lint"
 
 gradlePlugin {
     plugins {
-        lint {
+        lintPlugin {
             id = 'aditogether.lint'
-            displayName = 'AdiTogether Lint Plugin'
-            description = 'Setup Linters for the project'
             implementationClass = 'aditogether.buildtools.lint.LintPlugin'
         }
     }
