@@ -60,7 +60,6 @@ ktor-serialization = { module = "io.ktor:ktor-client-serialization", version.ref
 gradle-android-api = { module = "com.android.tools.build:gradle-api", version.ref = "gradleAndroidPlugin" }
 gradle-detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 gradle-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-gradle-kotlin-serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin" }
 gradle-toolchains = { module = "org.gradle.toolchains:foojay-resolver", version.ref = "gradleToolchains" }
 
 [plugins]
