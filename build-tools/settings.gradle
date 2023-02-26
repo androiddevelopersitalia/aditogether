@@ -1,9 +1,11 @@
 pluginManagement {
     apply from: "plugin-management.gradle", to: pluginManagement
+
+    includeBuild 'settings'
 }
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version("0.4.0")
+    id "aditogether.settings"
 }
 
 apply from: "dependency-management.gradle"
