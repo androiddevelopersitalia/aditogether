@@ -7,6 +7,10 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 
+/**
+ * Applies Jetpack Compose configuration to Android targets.
+ */
+@Suppress("unused")
 internal class AndroidComposePlugin : Plugin<Project> {
 
     override fun apply(target: Project) {

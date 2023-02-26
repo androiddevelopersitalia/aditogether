@@ -8,6 +8,10 @@ gradlePlugin {
             id = 'aditogether.android.app'
             implementationClass = 'aditogether.buildtools.android.AndroidAppPlugin'
         }
+        compose {
+            id = 'aditogether.android.compose'
+            implementationClass = 'aditogether.buildtools.android.AndroidComposePlugin'
+        }
         library {
             id = 'aditogether.android.library'
             implementationClass = 'aditogether.buildtools.android.AndroidLibraryPlugin'
