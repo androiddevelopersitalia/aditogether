@@ -1,0 +1,22 @@
+plugins {
+    id "groovy"
+    id "java-gradle-plugin"
+}
+
+group = "aditogether.buildtools.settings"
+
+gradlePlugin {
+    plugins {
+        settingsPlugin {
+            id = "aditogether.settings"
+            implementationClass = "aditogether.buildtools.settings.SettingsPlugin"
+        }
+    }
+}
+
+dependencies {
+    api gradleApi()
+
+    implementation localGroovy()
+    implementation libs.gradle.toolchains
+}
