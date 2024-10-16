@@ -1,5 +1,5 @@
 [versions]
-androidxActivity = "1.6.1"
+androidxActivity = "1.9.3"
 androidxComposeBom = "2023.01.00"
 androidxComposeCompiler = "1.4.3"
 androidxCore = "1.9.0"
